@@ -6,8 +6,8 @@
 
 
 char uart_buffer[] = "Speed: 22.22";
-long speed = 0;
-int pulsesCount = 0;
+int speed = 0;
+unsigned long pulsesCount = 0;
 int main(void)
 {
 
@@ -68,8 +68,8 @@ int main(void)
 
     __bis_SR_register(GIE);
     __no_operation();
-    int speed1 = (int) speed;
-    sprintf(uart_buffer, "Speed: %d", speed1);
+  
+    sprintf(uart_buffer, "Speed: %d", speed);
 
     i = 0;
     while(uart_buffer[i] != '\0')
@@ -110,7 +110,6 @@ __interrupt void Timer1_A (void)
 {
    speed = (pulsesCount * 60 *1000)/(150*12000) ;
    pulsesCount = 0;
-   //if (speed < 0) speed = speed * -1;
    __bic_SR_register_on_exit(LPM0_bits);
 }
 
