@@ -5,7 +5,7 @@
 
 
 
-char uart_buffer[] = "Speed: 22.22";
+char uart_buffer[] = "Speed: 0";
 int speed = 0;
 unsigned long pulsesCount = 0;
 int main(void)
